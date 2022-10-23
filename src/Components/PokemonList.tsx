@@ -5,19 +5,12 @@ import { gql } from "@apollo/client";
 
 import styled from "styled-components";
 import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
 
 import PokemonIcon from "./PokemonIcon";
 import PokemonCP from "./PokemonCP";
 
-export interface Pokémons {
-  id: string;
-  number: string;
-  name: string;
-  types: string[];
-  image: string;
-  maxCP: number;
-}
+import { Props } from "../Interfaces";
+import { Pokémons } from "../Interfaces";
 
 type Count = {
   children: React.ReactNode;
@@ -27,44 +20,16 @@ const SubTitle: React.FC<Count> = ({ children }: Count) => {
   return <h2>{children}</h2>;
 };
 
-export default function PokemonList() {
-  const [info, setInfo] = useState<Pokémons[]>([]);
-
-  useEffect(() => {
-    getData();
-  });
-
-  function getData() {
-    client
-      .query({
-        query: gql`
-          query {
-            pokemons(first: -1) {
-              id
-              name
-              number
-              types
-              image
-              maxCP
-            }
-          }
-        `,
-      })
-      .then((res: any = []) => {
-        setInfo(res.data.pokemons);
-        console.log(info);
-      });
-  }
-
+export default function PokemonList(props: Props) {
   return (
     <>
       <ListBox>
         <Header>
           <h1>Lista de Pokémons</h1>
-          <SubTitle>Total visíveis: {info.length}</SubTitle>
+          <SubTitle>Total visíveis: {props.pokemonInfo!.length}</SubTitle>
         </Header>
         <PokemonGrid>
-          {info.map((data, index) => (
+          {props.pokemonInfo!.map((data, index) => (
             <PokemonIcon>
               <PokemonImg src={data.image} />
               <PokemonInfo>
@@ -104,7 +69,7 @@ const ListBox = styled.div`
     font-size: 19px;
     color: #00a7fd;
   }
-`
+`;
 const Header = styled(Box)`
   margin-bottom: 40px;
 `;
@@ -116,9 +81,9 @@ const PokemonGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
 
-  &::-webkit-scrollbar{
+  &::-webkit-scrollbar {
     margin-top: 50px;
-    background-color: #FFF;
+    background-color: #fff;
   }
   &::-webkit-scrollbar-thumb {
     background-color: darkBlue;
