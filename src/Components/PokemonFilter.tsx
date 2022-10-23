@@ -156,7 +156,7 @@ export default function PokemonFilter() {
 
 //Styles
 const ListBox = styled(Box)`
-  width: 596px;
+  width: 429px;
   height: 556px;
   background-color: #f4f4f4;
   box-sizing: border-box;

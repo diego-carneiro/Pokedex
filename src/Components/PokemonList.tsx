@@ -74,7 +74,7 @@ export default function PokemonList() {
                     <h2>{data}</h2>
                   ))}
                 </PokemonType>
-                <PokemonCP>{data.maxCP}</PokemonCP>
+                <PokemonCP pokemonCP={data.maxCP}></PokemonCP>
               </PokemonInfo>
             </PokemonIcon>
           ))}
@@ -85,52 +85,61 @@ export default function PokemonList() {
 }
 
 //Styles
-const ListBox = styled(Box)`
-  width: 896px;
+const ListBox = styled.div`
+  width: 596px;
   height: 100vh;
   background-color: #f4f4f4;
   box-sizing: border-box;
-  padding: 65px;
+  padding: 40px;
   border-radius: 50px;
-  margin-right: 100px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 
   h1 {
     font-size: 50px;
     line-height: 0px;
   }
-
   h2 {
     font-size: 19px;
     color: #00a7fd;
   }
-`;
+`
 const Header = styled(Box)`
-  width: 896px;
   margin-bottom: 40px;
 `;
-const PokemonGrid = styled(Grid)`
-  width: 896px;
+const PokemonGrid = styled.div`
+  height: calc(100vh - 90);
   box-sizing: border-box;
+  overflow-y: auto;
 
   display: flex;
   flex-wrap: wrap;
+
+  &::-webkit-scrollbar{
+    margin-top: 50px;
+    background-color: #FFF;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: darkBlue;
+    border-radius: "15px";
+    height: "2px";
+  }
 `;
 const PokemonImg = styled.img`
-  width: 90px;
-  height: 90px;
+  width: 64px;
+  height: 64px;
   border-radius: 14px;
   border: 1px solid #dbdbdb;
   margin: 0px 20px 0px 10px;
 `;
 const PokemonInfo = styled.div`
-  height: 90px;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
   h1 {
-    font-size: 24px;
+    font-size: 16px;
   }
 `;
 

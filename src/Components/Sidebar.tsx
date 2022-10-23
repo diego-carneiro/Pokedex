@@ -15,7 +15,7 @@ export default function Sidebar() {
         sx={{
           flexShrink: 0,
           "& .MuiDrawer-paper": {
-            width: 400,
+            width: 283,
             boxSizing: "border-box",
             borderWidth: 0,
             position: "static",
