@@ -4,7 +4,6 @@ export interface Props {
   pokemonInfo?: Pokémons[];
   setFilteredInfo?: React.Dispatch<React.SetStateAction<Pokémons[]>>;
 }
-
 export interface TypeFilter {
   normal: boolean;
   fire: boolean;

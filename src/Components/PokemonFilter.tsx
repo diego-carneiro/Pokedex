@@ -68,6 +68,7 @@ export default function PokemonFilter(props: Props) {
         <h1>Filtro</h1>
       </Header>
       <Box sx={{ width: 300 }}>
+        <SliderTitle>maxCp</SliderTitle>
         <Slider
           getAriaLabel={() => "Temperature range"}
           value={value}
@@ -76,191 +77,207 @@ export default function PokemonFilter(props: Props) {
           valueLabelDisplay="auto"
           getAriaValueText={valueText}
         />
+        <IndicatorLayer>
+          <CPIndicator>{value[0]}</CPIndicator>
+          <CPIndicator>{value[1]}</CPIndicator>
+        </IndicatorLayer>
       </Box>
       <CheckBoxContainer>
         <FormControl component="fieldset">
           <FormLabel component="legend">Types</FormLabel>
           <FormGroup aria-label="position" row>
-            <FormControlLabel
-              value="end"
-              control={<Checkbox />}
-              label="Normal"
-              labelPlacement="end"
-              checked={typeFilter.normal}
-              onChange={() =>
-                setTypeFilter({ ...typeFilter, normal: !typeFilter.normal })
-              }
-            />
-            <FormControlLabel
-              value="end"
-              control={<Checkbox />}
-              label="Fire"
-              labelPlacement="end"
-              checked={typeFilter.fire}
-              onChange={() =>
-                setTypeFilter({ ...typeFilter, fire: !typeFilter.fire })
-              }
-            />
-            <FormControlLabel
-              value="end"
-              control={<Checkbox />}
-              label="Fighting"
-              labelPlacement="end"
-              checked={typeFilter.fighting}
-              onChange={() =>
-                setTypeFilter({ ...typeFilter, fighting: !typeFilter.fighting })
-              }
-            />
-            <FormControlLabel
-              value="end"
-              control={<Checkbox />}
-              label="Water"
-              labelPlacement="end"
-              checked={typeFilter.water}
-              onChange={() =>
-                setTypeFilter({ ...typeFilter, water: !typeFilter.water })
-              }
-            />
-            <FormControlLabel
-              value="end"
-              control={<Checkbox />}
-              label="Flying"
-              labelPlacement="end"
-              checked={typeFilter.flying}
-              onChange={() =>
-                setTypeFilter({ ...typeFilter, flying: !typeFilter.flying })
-              }
-            />
-            <FormControlLabel
-              value="end"
-              control={<Checkbox />}
-              label="Grass"
-              labelPlacement="end"
-              checked={typeFilter.grass}
-              onChange={() =>
-                setTypeFilter({ ...typeFilter, grass: !typeFilter.grass })
-              }
-            />
-            <FormControlLabel
-              value="end"
-              control={<Checkbox />}
-              label="Poison"
-              labelPlacement="end"
-              checked={typeFilter.poison}
-              onChange={() =>
-                setTypeFilter({ ...typeFilter, poison: !typeFilter.poison })
-              }
-            />
-            <FormControlLabel
-              value="end"
-              control={<Checkbox />}
-              label="Eletric"
-              labelPlacement="end"
-              checked={typeFilter.electric}
-              onChange={() =>
-                setTypeFilter({ ...typeFilter, electric: !typeFilter.electric })
-              }
-            />
-            <FormControlLabel
-              value="end"
-              control={<Checkbox />}
-              label="Ground"
-              labelPlacement="end"
-              checked={typeFilter.ground}
-              onChange={() =>
-                setTypeFilter({ ...typeFilter, ground: !typeFilter.ground })
-              }
-            />
-            <FormControlLabel
-              value="end"
-              control={<Checkbox />}
-              label="Psychic"
-              labelPlacement="end"
-              checked={typeFilter.psychic}
-              onChange={() =>
-                setTypeFilter({ ...typeFilter, psychic: !typeFilter.psychic })
-              }
-            />
-            <FormControlLabel
-              value="end"
-              control={<Checkbox />}
-              label="Rock"
-              labelPlacement="end"
-              checked={typeFilter.rock}
-              onChange={() =>
-                setTypeFilter({ ...typeFilter, rock: !typeFilter.rock })
-              }
-            />
-            <FormControlLabel
-              value="end"
-              control={<Checkbox />}
-              label="Ice"
-              labelPlacement="end"
-              checked={typeFilter.ice}
-              onChange={() =>
-                setTypeFilter({ ...typeFilter, ice: !typeFilter.ice })
-              }
-            />
-            <FormControlLabel
-              value="end"
-              control={<Checkbox />}
-              label="Bug"
-              labelPlacement="end"
-              checked={typeFilter.bug}
-              onChange={() =>
-                setTypeFilter({ ...typeFilter, bug: !typeFilter.bug })
-              }
-            />
-            <FormControlLabel
-              value="end"
-              control={<Checkbox />}
-              label="Dragon"
-              labelPlacement="end"
-              checked={typeFilter.dragon}
-              onChange={() =>
-                setTypeFilter({ ...typeFilter, dragon: !typeFilter.dragon })
-              }
-            />
-            <FormControlLabel
-              value="end"
-              control={<Checkbox />}
-              label="Ghost"
-              labelPlacement="end"
-              checked={typeFilter.ghost}
-              onChange={() =>
-                setTypeFilter({ ...typeFilter, ghost: !typeFilter.ghost })
-              }
-            />
-            <FormControlLabel
-              value="end"
-              control={<Checkbox />}
-              label="Dark"
-              labelPlacement="end"
-              checked={typeFilter.dark}
-              onChange={() =>
-                setTypeFilter({ ...typeFilter, dark: !typeFilter.dark })
-              }
-            />
-            <FormControlLabel
-              value="end"
-              control={<Checkbox />}
-              label="Steel"
-              labelPlacement="end"
-              checked={typeFilter.steel}
-              onChange={() =>
-                setTypeFilter({ ...typeFilter, steel: !typeFilter.steel })
-              }
-            />
-            <FormControlLabel
-              value="end"
-              control={<Checkbox />}
-              label="Fairy"
-              checked={typeFilter.fairy}
-              labelPlacement="end"
-              onChange={() =>
-                setTypeFilter({ ...typeFilter, fairy: !typeFilter.fairy })
-              }
-            />
+            <TypesColumn>
+              <FormControlLabel
+                value="end"
+                control={<Checkbox />}
+                label="Normal"
+                labelPlacement="end"
+                checked={typeFilter.normal}
+                onChange={() =>
+                  setTypeFilter({ ...typeFilter, normal: !typeFilter.normal })
+                }
+              />
+              <FormControlLabel
+                value="end"
+                control={<Checkbox />}
+                label="Water"
+                labelPlacement="end"
+                checked={typeFilter.water}
+                onChange={() =>
+                  setTypeFilter({ ...typeFilter, water: !typeFilter.water })
+                }
+              />
+              <FormControlLabel
+                value="end"
+                control={<Checkbox />}
+                label="Poison"
+                labelPlacement="end"
+                checked={typeFilter.poison}
+                onChange={() =>
+                  setTypeFilter({ ...typeFilter, poison: !typeFilter.poison })
+                }
+              />
+              <FormControlLabel
+                value="end"
+                control={<Checkbox />}
+                label="Psychic"
+                labelPlacement="end"
+                checked={typeFilter.psychic}
+                onChange={() =>
+                  setTypeFilter({ ...typeFilter, psychic: !typeFilter.psychic })
+                }
+              />
+              <FormControlLabel
+                value="end"
+                control={<Checkbox />}
+                label="Bug"
+                labelPlacement="end"
+                checked={typeFilter.bug}
+                onChange={() =>
+                  setTypeFilter({ ...typeFilter, bug: !typeFilter.bug })
+                }
+              />
+              <FormControlLabel
+                value="end"
+                control={<Checkbox />}
+                label="Dark"
+                labelPlacement="end"
+                checked={typeFilter.dark}
+                onChange={() =>
+                  setTypeFilter({ ...typeFilter, dark: !typeFilter.dark })
+                }
+              />
+            </TypesColumn>
+            <TypesColumn>
+              <FormControlLabel
+                value="end"
+                control={<Checkbox />}
+                label="Fire"
+                labelPlacement="end"
+                checked={typeFilter.fire}
+                onChange={() =>
+                  setTypeFilter({ ...typeFilter, fire: !typeFilter.fire })
+                }
+              />
+              <FormControlLabel
+                value="end"
+                control={<Checkbox />}
+                label="Flying"
+                labelPlacement="end"
+                checked={typeFilter.flying}
+                onChange={() =>
+                  setTypeFilter({ ...typeFilter, flying: !typeFilter.flying })
+                }
+              />
+              <FormControlLabel
+                value="end"
+                control={<Checkbox />}
+                label="Eletric"
+                labelPlacement="end"
+                checked={typeFilter.electric}
+                onChange={() =>
+                  setTypeFilter({
+                    ...typeFilter,
+                    electric: !typeFilter.electric,
+                  })
+                }
+              />
+              <FormControlLabel
+                value="end"
+                control={<Checkbox />}
+                label="Rock"
+                labelPlacement="end"
+                checked={typeFilter.rock}
+                onChange={() =>
+                  setTypeFilter({ ...typeFilter, rock: !typeFilter.rock })
+                }
+              />
+              <FormControlLabel
+                value="end"
+                control={<Checkbox />}
+                label="Dragon"
+                labelPlacement="end"
+                checked={typeFilter.dragon}
+                onChange={() =>
+                  setTypeFilter({ ...typeFilter, dragon: !typeFilter.dragon })
+                }
+              />
+              <FormControlLabel
+                value="end"
+                control={<Checkbox />}
+                label="Steel"
+                labelPlacement="end"
+                checked={typeFilter.steel}
+                onChange={() =>
+                  setTypeFilter({ ...typeFilter, steel: !typeFilter.steel })
+                }
+              />
+            </TypesColumn>
+            <TypesColumn>
+              <FormControlLabel
+                value="end"
+                control={<Checkbox />}
+                label="Fighting"
+                labelPlacement="end"
+                checked={typeFilter.fighting}
+                onChange={() =>
+                  setTypeFilter({
+                    ...typeFilter,
+                    fighting: !typeFilter.fighting,
+                  })
+                }
+              />
+              <FormControlLabel
+                value="end"
+                control={<Checkbox />}
+                label="Grass"
+                labelPlacement="end"
+                checked={typeFilter.grass}
+                onChange={() =>
+                  setTypeFilter({ ...typeFilter, grass: !typeFilter.grass })
+                }
+              />
+              <FormControlLabel
+                value="end"
+                control={<Checkbox />}
+                label="Ground"
+                labelPlacement="end"
+                checked={typeFilter.ground}
+                onChange={() =>
+                  setTypeFilter({ ...typeFilter, ground: !typeFilter.ground })
+                }
+              />
+              <FormControlLabel
+                value="end"
+                control={<Checkbox />}
+                label="Ice"
+                labelPlacement="end"
+                checked={typeFilter.ice}
+                onChange={() =>
+                  setTypeFilter({ ...typeFilter, ice: !typeFilter.ice })
+                }
+              />
+              <FormControlLabel
+                value="end"
+                control={<Checkbox />}
+                label="Ghost"
+                labelPlacement="end"
+                checked={typeFilter.ghost}
+                onChange={() =>
+                  setTypeFilter({ ...typeFilter, ghost: !typeFilter.ghost })
+                }
+              />
+              <FormControlLabel
+                value="end"
+                control={<Checkbox />}
+                label="Fairy"
+                checked={typeFilter.fairy}
+                labelPlacement="end"
+                onChange={() =>
+                  setTypeFilter({ ...typeFilter, fairy: !typeFilter.fairy })
+                }
+              />
+            </TypesColumn>
           </FormGroup>
         </FormControl>
       </CheckBoxContainer>
@@ -274,11 +291,26 @@ const ListBox = styled(Box)`
   height: 556px;
   background-color: #f4f4f4;
   box-sizing: border-box;
-  padding: 65px;
+  padding: 40px;
   border-radius: 50px 0px 0px 50px;
 `;
 const Header = styled(Box)`
-  width: 896px;
   margin-bottom: 40px;
 `;
 const CheckBoxContainer = styled.div``;
+const SliderTitle = styled.div`
+  h1 {
+  }
+`;
+const TypesColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+const IndicatorLayer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: space-between;
+`
+const CPIndicator = styled.div`
+`

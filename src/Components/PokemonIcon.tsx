@@ -17,6 +17,7 @@ const PokeBox = styled(Box)`
   height: 80px;
   border-radius: 20px;
   background-color: #FFF;
+  margin: 15px 15px 0px 0px;
 
   display: flex;
   align-items: center;

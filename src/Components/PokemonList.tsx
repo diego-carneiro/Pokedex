@@ -1,7 +1,4 @@
-import React, { useState, useEffect } from "react";
-
-import { client } from "../config/client-graphql";
-import { gql } from "@apollo/client";
+import React from "react";
 
 import styled from "styled-components";
 import Box from "@mui/material/Box";
@@ -10,7 +7,6 @@ import PokemonIcon from "./PokemonIcon";
 import PokemonCP from "./PokemonCP";
 
 import { Props } from "../Interfaces";
-import { Pokémons } from "../Interfaces";
 
 type Count = {
   children: React.ReactNode;
@@ -41,6 +37,9 @@ export default function PokemonList(props: Props) {
                 </PokemonType>
                 <PokemonCP pokemonCP={data.maxCP}></PokemonCP>
               </PokemonInfo>
+              <PokemonNumber>
+                <p>{data.number}</p>
+              </PokemonNumber>
             </PokemonIcon>
           ))}
         </PokemonGrid>
@@ -52,21 +51,21 @@ export default function PokemonList(props: Props) {
 //Styles
 const ListBox = styled.div`
   width: 596px;
-  height: 100vh;
+  height: calc(100vh - 50px);
   background-color: #f4f4f4;
   box-sizing: border-box;
-  padding: 40px;
-  border-radius: 50px;
+  padding: 40px 20px 40px 40px;
+  border-radius: 50px 50px 0px 0px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
 
   h1 {
-    font-size: 50px;
+    font-size: 35px;
     line-height: 0px;
   }
   h2 {
-    font-size: 19px;
+    font-size: 14px;
     color: #00a7fd;
   }
 `;
@@ -74,7 +73,6 @@ const Header = styled(Box)`
   margin-bottom: 40px;
 `;
 const PokemonGrid = styled.div`
-  height: calc(100vh - 90);
   box-sizing: border-box;
   overflow-y: auto;
 
@@ -82,12 +80,13 @@ const PokemonGrid = styled.div`
   flex-wrap: wrap;
 
   &::-webkit-scrollbar {
-    margin-top: 50px;
+    width: 12px;
     background-color: #fff;
+    border-radius: 9px;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: darkBlue;
-    border-radius: "15px";
+    background-color: #dbdbdb;
+    border-radius: 9px;
     height: "2px";
   }
 `;
@@ -99,6 +98,7 @@ const PokemonImg = styled.img`
   margin: 0px 20px 0px 10px;
 `;
 const PokemonInfo = styled.div`
+  width: 106px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -107,13 +107,21 @@ const PokemonInfo = styled.div`
     font-size: 16px;
   }
 `;
-
 const PokemonType = styled.div`
   display: flex;
   flex-direction: row;
 
   h2 {
     font-size: 14px;
+    color: #939393;
+    line-height: 0px;
+  }
+`;
+const PokemonNumber = styled.div`
+  height: 64px;
+
+  p {
+    font-size: 12px;
     color: #939393;
     line-height: 0px;
   }

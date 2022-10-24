@@ -64,15 +64,15 @@ const TextBox = styled(Box)`
   margin-left: 8px;
 
   h1 {
-    font-size: 20px;
+    font-size: 16px;
     line-height: 0px;
   }
   h2 {
-    font-size: 15px;
+    font-size: 12px;
     color: #939393;
   }
 `;
 const Logo = styled.img`
-  width: 80px;
-  height: 80px;
+  width: 52px;
+  height: 52px;
 `;
