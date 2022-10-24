@@ -58,5 +58,11 @@ const MainBox = styled(Box)`
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding-top: 50px;
+
+  @media (max-width: 900px) {
+    width: 100vw;
+
+    display: flex;
+    flex-direction: row;
+  }
 `;

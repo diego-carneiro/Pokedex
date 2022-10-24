@@ -67,6 +67,12 @@ const ListBox = styled.div`
   h2 {
     font-size: 14px;
     color: #00a7fd;
+    margin-right: 5px;
+  }
+
+  @media (max-width: 900px) {
+    width: 100vw;
+    border-radius: 50px;
   }
 `;
 const Header = styled(Box)`
@@ -105,6 +111,7 @@ const PokemonInfo = styled.div`
 
   h1 {
     font-size: 16px;
+    line-height: 0px;
   }
 `;
 const PokemonType = styled.div`
@@ -112,7 +119,7 @@ const PokemonType = styled.div`
   flex-direction: row;
 
   h2 {
-    font-size: 14px;
+    font-size: 12px;
     color: #939393;
     line-height: 0px;
   }

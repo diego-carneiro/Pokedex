@@ -293,11 +293,23 @@ const ListBox = styled(Box)`
   box-sizing: border-box;
   padding: 40px;
   border-radius: 50px 0px 0px 50px;
+
+  @media (max-width: 900px) {
+    width: 100vw;
+    border-radius: 50px;
+    margin-top: 40px;
+  }
 `;
 const Header = styled(Box)`
   margin-bottom: 40px;
+  h1 {
+    font-size: 35px;
+    line-height: 0px;
+  }
 `;
-const CheckBoxContainer = styled.div``;
+const CheckBoxContainer = styled.div`
+  margin-top: 35px;
+`;
 const SliderTitle = styled.div`
   h1 {
   }
@@ -311,6 +323,15 @@ const IndicatorLayer = styled.div`
   flex-wrap: wrap;
 
   justify-content: space-between;
-`
+`;
 const CPIndicator = styled.div`
-`
+  width: 77px;
+  height: 34px;
+  border: 2px solid #dbdbdb;
+  border-radius: 10px;
+  font-weight: bold;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
